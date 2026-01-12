@@ -42,9 +42,9 @@ const projectsData = {
     description: "Implemented a fully functional, cloud-based ticketing system (osTicket).",
     video: "media/project1/video.mp4",
     images: [
-      "media/project1/osTicket_login.png",
-      "media/project1/php_manager.png",
-      "media/project1/iis.png",
+      "Screens/media/project1/osTicket_login.png",
+      "Screens/media/project1/php_manager.png",
+      "Screens/media/project1/iis.png",
     ]
   },
 
@@ -53,11 +53,11 @@ const projectsData = {
     description: "Built a custom dashboard to monitor home network, block ads, and automate routine tasks.",
     video: "",
     images: [
-      "media/project2/pi_hole_blocker.png",
-      "media/project2/pi_hole_install.png",
-      "media/project2/pi_hole_dash.png",
-      "media/project2/pi_hole_log.png",
-      "media/project2/pi_vnc_viewer.png",
+      "Screens/media/project2/pi_hole_blocker.png",
+      "Screens/media/project2/pi_hole_install.png",
+      "Screens/media/project2/pi_hole_dash.png",
+      "Screens/media/project2/pi_hole_log.png",
+      "Screens/media/project2/pi_vnc_viewer.png",
     ]
   },
 
