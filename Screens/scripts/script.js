@@ -95,7 +95,13 @@ const projectsData = {
     title: "SIEM Server Implementation (Wazuh)",
     description: "Configured Wazuh SIEM for real-time threat detection and vulnerability monitoring.",
     video: "",
-    images: [] // Add image paths here when ready
+    images: [
+      "Screens/media/project3/wazuh_configuration.png",
+      "Screens/media/project3/wazuh_dashboard.png",
+      "Screens/media/project3/wazuh_discover.png",
+      "Screens/media/project3/wazuh_main.png",
+      "Screens/media/project3/wazuh_test.png",
+    ] // Add image paths here when ready
   },
 
   'active directory': {
