@@ -1,4 +1,34 @@
 /* =========================================
+   0. MOBILE HAMBURGER MENU
+   ========================================= */
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
+
+if (hamburger) {
+  hamburger.addEventListener('click', function() {
+    navMenu.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', navMenu.classList.contains('active'));
+  });
+
+  // Close menu when a link is clicked
+  const navLinks = navMenu.querySelectorAll('a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      navMenu.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', function(event) {
+    if (!event.target.closest('header')) {
+      navMenu.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
+/* =========================================
    1. CONTACT FORM HANDLING
    ========================================= */
 const form = document.getElementById("contactForm");
