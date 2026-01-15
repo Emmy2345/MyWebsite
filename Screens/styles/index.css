@@ -38,12 +38,15 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 12px 0;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .brand {
   display: flex;
   gap: 12px;
   align-items: center;
+  min-width: 200px;
 }
 
 .logo {
@@ -56,11 +59,14 @@ header {
   justify-content: center;
   font-weight: 700;
   color: white;
+  flex-shrink: 0;
 }
 
 nav {
   display: flex;
-  gap: 12px;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 nav a {
@@ -68,6 +74,8 @@ nav a {
   text-decoration: none;
   padding: 6px 10px;
   border-radius: 8px;
+  font-size: 14px;
+  white-space: nowrap;
 }
 
 nav a:hover {
@@ -78,26 +86,29 @@ nav a:hover {
 /* --- HERO SECTION --- */
 .hero {
   display: grid;
-  grid-template-columns: 1fr 360px;
+  grid-template-columns: 1fr 1fr;
   gap: 28px;
   align-items: center;
   padding: 48px 0;
 }
 
 .hero h1 {
-  font-size: clamp(28px, 5vw, 44px);
+  font-size: clamp(24px, 5vw, 44px);
   margin: 0;
+  line-height: 1.2;
 }
 
 .lead {
   color: var(--muted);
   margin-top: 8px;
+  font-size: clamp(14px, 2vw, 16px);
 }
 
 .cta {
   margin-top: 20px;
   display: flex;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 /* --- BUTTONS --- */
@@ -114,6 +125,11 @@ nav a:hover {
   font-size: inherit;
   display: inline-block;
   text-align: center;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-2px);
 }
 
 .btn.secondary {
@@ -125,6 +141,28 @@ nav a:hover {
 .btn:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+}
+
+/* Form Inputs */
+input, textarea {
+  font-size: 16px;
+}
+
+input[type="email"],
+textarea {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  color: inherit;
+  border-radius: 8px;
+  padding: 10px;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+input[type="email"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent);
 }
 
 /* --- CARDS --- */
@@ -155,6 +193,10 @@ nav a:hover {
   -webkit-overflow-scrolling: touch; /* Smooth scroll on mobile */
   scrollbar-width: thin; /* Firefox scrollbar thickness */
   scrollbar-color: var(--accent) rgba(255,255,255,0.05); /* Firefox scrollbar color */
+  margin-right: -24px;
+  margin-left: -24px;
+  padding-right: 24px;
+  padding-left: 24px;
 }
 
 .project-card-scroll {
@@ -225,7 +267,7 @@ footer {
   background: rgba(0,0,0,0.85); /* Dark dimmed background */
   z-index: 1000; /* Sit on top of everything */
   backdrop-filter: blur(5px); /* Blur the background */
-  padding: 20px;
+  padding: 10px;
   align-items: center;
   justify-content: center;
 }
@@ -247,12 +289,16 @@ footer {
   position: sticky;
   top: 0;
   background: rgba(15, 23, 32, 0.95); /* Slightly transparent header */
-  padding: 16px 24px;
+  padding: 12px 16px;
   border-bottom: 1px solid rgba(255,255,255,0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 10;
+}
+
+.modal-header h2 {
+  font-size: clamp(16px, 4vw, 24px);
 }
 
 .close-btn {
@@ -262,22 +308,28 @@ footer {
   font-size: 28px;
   line-height: 1;
   cursor: pointer;
-  padding: 4px;
+  padding: 4px 8px;
   transition: color 0.2s;
+  min-width: 40px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .close-btn:hover {
     color: white;
 }
 
 .modal-body {
-  padding: 24px;
+  padding: 16px;
 }
 
 /* --- CAROUSEL / GALLERY STYLES --- */
 .carousel-container {
     position: relative;
     width: 100%;
-    height: 400px; /* Adjust height based on preference */
+    height: auto;
+    min-height: 300px;
     background: #000;
     border-radius: 12px;
     overflow: hidden;
@@ -288,11 +340,21 @@ footer {
     margin-top: 20px;
 }
 
+.carousel-track {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .carousel-track img {
     max-width: 100%;
     max-height: 400px;
     display: none; /* Hidden by default */
     object-fit: contain; /* Keeps whole image visible */
+    width: auto;
+    height: auto;
 }
 
 .carousel-track img.active {
@@ -308,21 +370,26 @@ footer {
     background-color: rgba(0, 0, 0, 0.6);
     color: white;
     border: none;
-    font-size: 24px;
-    padding: 12px 18px;
+    font-size: 20px;
+    padding: 10px 16px;
     cursor: pointer;
     border-radius: 50%;
     transition: background 0.2s;
     user-select: none;
     z-index: 10;
+    min-width: 40px;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .nav-btn:hover {
     background-color: var(--accent);
 }
 
-.prev { left: 10px; }
-.next { right: 10px; }
+.prev { left: 8px; }
+.next { right: 8px; }
 
 @keyframes fadeIn {
     from { opacity: 0.5; }
@@ -336,21 +403,197 @@ footer {
   margin-bottom: 20px;
   background: black;
   border: 1px solid rgba(255,255,255,0.1);
+  max-height: 60vh;
+}
+
+.video-container video {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* --- RESPONSIVE --- */
-@media (max-width: 880px) {
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+
   .hero {
     grid-template-columns: 1fr;
+    padding: 32px 0;
+    gap: 24px;
+  }
+
+  .hero h1 {
+    font-size: clamp(22px, 5vw, 32px);
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav {
+    width: 100%;
+    gap: 6px;
+  }
+
+  nav a {
+    padding: 6px 8px;
+    font-size: 13px;
+  }
+
+  .cta {
+    width: 100%;
+  }
+
+  .cta a {
+    flex: 1;
+    text-align: center;
+  }
+
+  .project-card-scroll {
+    min-width: 280px;
+    max-width: none;
+  }
+
+  .cert-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cert-card {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .cert-logo {
+    width: 45px;
+    height: 45px;
+  }
+
+  .cert-info h3 {
+    font-size: 14px;
   }
 }
 
 @media (max-width: 520px) {
   .container {
-    padding: 16px;
+    padding: 12px;
   }
+
+  header {
+    padding: 8px 0;
+  }
+
+  .brand {
+    min-width: auto;
+  }
+
+  .logo {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+
   nav {
     display: none;
+  }
+
+  .hero {
+    padding: 24px 0;
+    gap: 16px;
+  }
+
+  .hero h1 {
+    font-size: clamp(18px, 5vw, 28px);
+  }
+
+  .lead {
+    font-size: 13px;
+  }
+
+  .cta {
+    margin-top: 16px;
+    gap: 8px;
+  }
+
+  .cta a {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .card {
+    padding: 12px;
+  }
+
+  .projects .project {
+    padding: 12px;
+  }
+
+  .project-scroller {
+    gap: 12px;
+    padding-bottom: 12px;
+  }
+
+  .project-card-scroll {
+    min-width: 85vw;
+    max-width: 85vw;
+  }
+
+  .btn {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .skill {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+
+  .skills {
+    gap: 6px;
+  }
+
+  .modal-header {
+    padding: 12px;
+  }
+
+  .modal-body {
+    padding: 12px;
+  }
+
+  .carousel-container {
+    min-height: 250px;
+  }
+
+  .carousel-track img {
+    max-height: 300px;
+  }
+
+  .nav-btn {
+    font-size: 18px;
+    padding: 8px 12px;
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .prev { left: 4px; }
+  .next { right: 4px; }
+
+  #contact {
+    flex-direction: column;
+  }
+
+  #contact .card {
+    flex-direction: column;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  input, textarea {
+    font-size: 16px;
   }
 }
 
