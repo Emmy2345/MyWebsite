@@ -70,7 +70,7 @@ const projectsData = {
   'osTicket': {
     title: "Help Desk Ticketing System (osTicket)",
     description: "Implemented a fully functional, cloud-based ticketing system (osTicket).",
-    video: "media/project1/video.mp4",
+    video: "",
     images: [
       "Screens/media/project1/osTicket_login.png",
       "Screens/media/project1/php_manager.png",
