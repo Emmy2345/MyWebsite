@@ -3,25 +3,32 @@
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Emmanuel Estrella - Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Emmanuel Estrella Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emmanuel Estrella | Cybersecurity Portfolio</title>
   <link rel="icon" href="Screens/documents/profile.jpeg">
   <link rel="stylesheet" href="Screens/styles/index.css" />
+  <meta name="description"
+    content="Portfolio of Emmanuel Estrella - Cybersecurity Specialist & IT Operations. View projects, skills, and certifications.">
 </head>
 
 <body>
   <div class="container">
     <header>
       <div class="brand">
-        <div class="logo" aria-hidden>EE</div>
+        <div class="logo" aria-hidden="true">EE</div>
         <div>
           <div style="font-weight:700">Emmanuel Estrella</div>
           <div style="font-size:13px;color:var(--muted)">Cybersecurity Specialist • IT Operations</div>
         </div>
       </div>
-      <nav aria-label="Main navigation">
+
+      <button id="hamburger" class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="navMenu" class="nav-menu" aria-label="Main navigation">
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#certifications">Certifications</a>
@@ -74,131 +81,115 @@
       <section id="about" style="margin-top:18px">
         <div class="card">
           <h2 style="margin-top:0">About</h2>
-          <p class="lead" style="margin-top:8px;color:var(--muted)">IT & Security Specialist with an active DoD Secret
-            Clearance and a dual background in Computer Science and
-            Cybersecurity. Blends military-grade operational discipline with technical expertise in network
-            administration, threat
-            detection, and risk management. Committed to safeguarding mission-critical infrastructure through rigorous
-            access
-            controls and proactive security strategies.</p>
+          <p class="lead" style="margin-top:8px;color:var(--muted)">IT & Security Specialist with an active <strong>DoD
+              Secret
+              Clearance</strong> and a dual background in Computer Science and Cybersecurity. Blends military-grade
+            operational discipline with technical expertise in network administration, threat detection, and risk
+            management. Committed to safeguarding mission-critical infrastructure through rigorous access controls and
+            proactive security strategies.</p>
         </div>
       </section>
 
       <section id="projects" class="projects">
-        <h2>Projects</h2>
-        <p style="color:var(--muted); font-size:14px; margin-bottom:12px">Swipe to see more &rarr;</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px">
+          <h2 style="margin:0">Projects</h2>
+          <p class="scroll-hint" style="color:var(--muted); font-size:14px; margin:0">Scroll for more →</p>
+        </div>
 
-        <div class="project-scroller">
+        <div class="scroller-wrapper" style="position: relative;">
+          <div class="project-scroller" id="projectScroller">
 
-          <article class="project card project-card-scroll">
-            <div>
-              <h3 style="margin:0">Help Desk Ticketing System</h3>
-              <p style="color:var(--muted);font-size:14px;margin-top:6px">Implemented a fully functional, cloud-based
-                ticketing system (osTicket).</p>
-              <h3 style="color:var(--muted);font-size:14px;margin-top:6px">Technologies Used:</h3>
-              <ul style="color:var(--muted);font-size:14px;margin-top:6px;padding-left:20px;">
-                <li>Microsoft Azure</li>
-                <li>Windows 11 Pro</li>
-                <li>Internet Information Services (IIS)</li>
-                <li>PHP Manager</li>
-                <li>MySQL</li>
-                <li>HeidiSQL</li>
-                <li>osTicket</li>
-              </ul>
-            </div>
-            <button onclick="openModal('osTicket')" class="btn"
-              style="width:100%; margin-top:12px; cursor:pointer;">View Details</button>
-          </article>
+            <article class="project card project-card-scroll">
+              <div>
+                <h3 style="margin:0">Help Desk Ticketing System</h3>
+                <p style="color:var(--muted);font-size:14px;margin-top:6px">Implemented a fully functional, cloud-based
+                  ticketing system (osTicket).</p>
+                <h3 style="color:var(--muted);font-size:14px;margin-top:6px">Technologies Used:</h3>
+                <ul style="color:var(--muted);font-size:14px;margin-top:6px;padding-left:20px;">
+                  <li>Microsoft Azure</li>
+                  <li>Windows 11 Pro</li>
+                  <li>IIS & PHP Manager</li>
+                  <li>MySQL & HeidiSQL</li>
+                  <li>osTicket</li>
+                </ul>
+              </div>
+              <button onclick="openModal('osTicket')" class="btn"
+                style="width:100%; margin-top:12px; cursor:pointer;">View Details</button>
+            </article>
 
-          <article class="project card project-card-scroll">
-            <div>
-              <h3 style="margin:0">Home Lab: Network-Wide DNS Sinkhole & Ad Blocker</h3>
-              <p style="color:var(--muted);font-size:14px;margin-top:6px">Built a custom dashboard to monitor home
-                network, block ads, and automate routine tasks.</p>
-              <h3 style="color:var(--muted);font-size:14px;margin-top:6px">Technologies Used:</h3>
-              <ul style="color:var(--muted);font-size:14px;margin-top:6px;padding-left:20px;">
-                <li>Raspberry Pi 5</li>
-                <li>SSH (Secure Shell)</li>
-                <li>Pi-hole</li>
-                <li>PowerShell/Command Prompt</li>
-                <li>Lighttpd</li>
-                <li>Linux CLI (Command Line Interface)</li>
-                <li>Unbound DNS</li>
-              </ul>
-            </div>
-            <button onclick="openModal('homelab')" class="btn" style="width:100%; margin-top:12px; cursor:pointer;">View
-              Details</button>
-          </article>
+            <article class="project card project-card-scroll">
+              <div>
+                <h3 style="margin:0">Home Lab: DNS Sinkhole</h3>
+                <p style="color:var(--muted);font-size:14px;margin-top:6px">Built a custom dashboard to monitor home
+                  network, block ads, and automate routine tasks.</p>
+                <h3 style="color:var(--muted);font-size:14px;margin-top:6px">Technologies Used:</h3>
+                <ul style="color:var(--muted);font-size:14px;margin-top:6px;padding-left:20px;">
+                  <li>Raspberry Pi 5</li>
+                  <li>SSH (Secure Shell)</li>
+                  <li>Pi-hole & Unbound DNS</li>
+                  <li>PowerShell/Bash</li>
+                  <li>Lighttpd</li>
+                </ul>
+              </div>
+              <button onclick="openModal('homelab')" class="btn"
+                style="width:100%; margin-top:12px; cursor:pointer;">View
+                Details</button>
+            </article>
 
-          <article class="project card project-card-scroll">
-            <div>
-              <h3 style="margin:0">SIEM Server Implementation (Wazuh)</h3>
-              <p style="color:var(--muted);font-size:14px;margin-top:6px">Configured Wazuh SIEM for real-time threat
-                detection and vulnerability monitoring.</p>
-              <h3 style="color:var(--muted);font-size:14px;margin-top:6px">Technologies Used:</h3>
-              <ul style="color:var(--muted);font-size:14px;margin-top:6px;padding-left:20px;">
-                <li>VMware Workstation Pro</li>
-                <li>Ubuntu 24.04 LTS</li>
-                <li>Wazuh</li>
-                <li>Internal/Host-Only Network</li>
-                <li>GitHub</li>
-              </ul>
-            </div>
-            <button onclick="openModal('siem server')" class="btn"
-              style="width:100%; margin-top:12px; cursor:pointer;">View Details</button>
-          </article>
+            <article class="project card project-card-scroll">
+              <div>
+                <h3 style="margin:0">SIEM Implementation</h3>
+                <p style="color:var(--muted);font-size:14px;margin-top:6px">Configured Wazuh SIEM for real-time threat
+                  detection and vulnerability monitoring.</p>
+                <h3 style="color:var(--muted);font-size:14px;margin-top:6px">Technologies Used:</h3>
+                <ul style="color:var(--muted);font-size:14px;margin-top:6px;padding-left:20px;">
+                  <li>VMware Workstation Pro</li>
+                  <li>Ubuntu 24.04 LTS</li>
+                  <li>Wazuh Manager/Agent</li>
+                  <li>Network Configuration</li>
+                  <li>GitHub Integration</li>
+                </ul>
+              </div>
+              <button onclick="openModal('siem server')" class="btn"
+                style="width:100%; margin-top:12px; cursor:pointer;">View Details</button>
+            </article>
 
-          <article class="project card project-card-scroll">
-            <div>
-              <h3 style="margin:0">Policies and Standards Implementation</h3>
-              <p style="color:var(--muted);font-size:14px;margin-top:6px">Implemented and maintained corporate policies
-                and standards for IT operations and cybersecurity.</p>
-              <h3 style="color:var(--muted);font-size:14px;margin-top:6px">Documents:</h3>
-              <ul style="color:var(--muted);font-size:14px;margin-top:6px;padding-left:20px;">
-                <li>Security Plan</li>
-                <li>Change Control Management Standard</li>
-                <li>Least Privilege Policy</li>
-                <li>Session Termination Policy</li>
-              </ul>
-            </div>
-            <button onclick="openModal('policies and standards')" class="btn"
-              style="width:100%; margin-top:12px; cursor:pointer;">View Details</button>
-          </article>
+            <article class="project card project-card-scroll">
+              <div>
+                <h3 style="margin:0">Policies & Standards</h3>
+                <p style="color:var(--muted);font-size:14px;margin-top:6px">Implemented and maintained corporate
+                  policies
+                  and standards for IT operations and cybersecurity.</p>
+                <h3 style="color:var(--muted);font-size:14px;margin-top:6px">Documents:</h3>
+                <ul style="color:var(--muted);font-size:14px;margin-top:6px;padding-left:20px;">
+                  <li>Security Plan</li>
+                  <li>Change Control Management</li>
+                  <li>Least Privilege Policy</li>
+                  <li>Session Termination Policy</li>
+                </ul>
+              </div>
+              <button onclick="openModal('policies and standards')" class="btn"
+                style="width:100%; margin-top:12px; cursor:pointer;">View Details</button>
+            </article>
 
-          <article class="project card project-card-scroll">
-            <div>
-              <h3 style="margin:0">PodsForSquads Web Application</h3>
-              <p style="color:var(--muted);font-size:14px;margin-top:6px">Co-developed a centralized podcast discovery
-                platform that allows users to create, curate, and share collaborative audio
-                playlists using real-time cloud infrastructure.</p>
-              <h3 style="color:var(--muted);font-size:14px;margin-top:6px">Technologies Used:</h3>
-              <ul style="color:var(--muted);font-size:14px;margin-top:6px;padding-left:20px;">
-                <li>HTML/CSS/JavaScript</li>
-                <li>Google Firebase (Auth & Database)</li>
-                <li>ListenNotes API</li>
-                <li>Git/GitHub</li>
-                <li>VS Code</li>
-              </ul>
-            </div>
-            <button onclick="openModal('podcast website')" class="btn"
-              style="width:100%; margin-top:12px; cursor:pointer;">View Details</button>
-          </article>
+            <article class="project card project-card-scroll">
+              <div>
+                <h3 style="margin:0">PodsForSquads Web App</h3>
+                <p style="color:var(--muted);font-size:14px;margin-top:6px">Co-developed a centralized podcast discovery
+                  platform with collaborative playlists.</p>
+                <h3 style="color:var(--muted);font-size:14px;margin-top:6px">Technologies Used:</h3>
+                <ul style="color:var(--muted);font-size:14px;margin-top:6px;padding-left:20px;">
+                  <li>HTML/CSS/JavaScript</li>
+                  <li>Google Firebase</li>
+                  <li>ListenNotes API</li>
+                  <li>Git/GitHub</li>
+                </ul>
+              </div>
+              <button onclick="openModal('podcast website')" class="btn"
+                style="width:100%; margin-top:12px; cursor:pointer;">View Details</button>
+            </article>
 
-          <article class="project card project-card-scroll">
-            <div>
-              <h3 style="margin:0">Future Project</h3>
-              <p style="color:var(--muted);font-size:14px;margin-top:6px">Description of a future project goes here.</p>
-              <h3 style="color:var(--muted);font-size:14px;margin-top:6px">Technologies Used:</h3>
-              <ul style="color:var(--muted);font-size:14px;margin-top:6px;padding-left:20px;">
-                <li>Python</li>
-                <li>HTML/CSS</li>
-                <li>JavaScript</li>
-                <li>Git/GitHub</li>
-              </ul>
-            </div>
-            <button class="btn secondary" style="width:100%; margin-top:12px;" disabled>Coming Soon</button>
-          </article>
-
+          </div>
         </div>
       </section>
 
@@ -225,7 +216,7 @@
             </div>
           </a>
 
-          <a href="#" target="_blank" class="cert-card">
+          <a href="#" target="_blank" class="cert-card" style="opacity: 0.8; cursor: default">
             <img src="Screens/media/certifications/azure_az900.jpg" alt="Azure" class="cert-logo">
             <div class="cert-info">
               <h3>Azure Fundamentals (AZ-900)</h3>
@@ -259,37 +250,67 @@
 
       <section id="skills" style="margin-top:24px">
         <h2>Skills</h2>
-        <div class="card" style="margin-top:12px">
-          <div class="skills">
-            <span class="skill">Jira</span>
-            <span class="skill">GitHub</span>
-            <span class="skill">Wireshark</span>
-            <span class="skill">Visio</span>
-            <span class="skill">osTicket</span>
-            <span class="skill">VMware</span>
-            <span class="skill">Microsoft Azure</span>
-            <span class="skill">TCP/IP</span>
-            <span class="skill">DNS</span>
-            <span class="skill">DHCP</span>
-            <span class="skill">VPN</span>
-            <span class="skill">VLANs</span>
-            <span class="skill">Firewall Configuration</span>
-            <span class="skill">C#</span>
-            <span class="skill">C++</span>
-            <span class="skill">Java</span>
-            <span class="skill">Dart</span>
-            <span class="skill">HTML</span>
-            <span class="skill">CSS</span>
-            <span class="skill">Python</span>
-            <span class="skill">PowerShell</span>
-            <span class="skill">Bash</span>
-            <span class="skill">Windows Server 2019</span>
-            <span class="skill">Windows 10/11</span>
-            <span class="skill">Linux (Ubuntu)</span>
-            <span class="skill">Active Directory</span>
-            <span class="skill">Firebase</span>
-            <span class="skill">MySQL</span>
+        <div class="skills-container" style="margin-top:12px">
+
+          <div class="card skill-card">
+            <h3
+              style="margin-top:0; color:var(--accent); font-size:14px; font-weight:600; text-transform:uppercase; letter-spacing:0.5px;">
+              Networking & Security</h3>
+            <div class="skills">
+              <span class="skill">Wireshark</span>
+              <span class="skill">TCP/IP</span>
+              <span class="skill">DNS</span>
+              <span class="skill">DHCP</span>
+              <span class="skill">VPN</span>
+              <span class="skill">VLANs</span>
+              <span class="skill">Firewalls</span>
+              <span class="skill">Wazuh</span>
+            </div>
           </div>
+
+          <div class="card skill-card">
+            <h3
+              style="margin-top:0; color:var(--accent); font-size:14px; font-weight:600; text-transform:uppercase; letter-spacing:0.5px;">
+              Cloud & Infrastructure</h3>
+            <div class="skills">
+              <span class="skill">Microsoft Azure</span>
+              <span class="skill">VMware</span>
+              <span class="skill">Windows Server 2019</span>
+              <span class="skill">Windows 10/11</span>
+              <span class="skill">Linux (Ubuntu)</span>
+              <span class="skill">Active Directory</span>
+            </div>
+          </div>
+
+          <div class="card skill-card">
+            <h3
+              style="margin-top:0; color:var(--accent); font-size:14px; font-weight:600; text-transform:uppercase; letter-spacing:0.5px;">
+              Development & Scripting</h3>
+            <div class="skills">
+              <span class="skill">Python</span>
+              <span class="skill">PowerShell</span>
+              <span class="skill">Bash</span>
+              <span class="skill">C#</span>
+              <span class="skill">C++</span>
+              <span class="skill">Java</span>
+              <span class="skill">HTML/CSS</span>
+            </div>
+          </div>
+
+          <div class="card skill-card">
+            <h3
+              style="margin-top:0; color:var(--accent); font-size:14px; font-weight:600; text-transform:uppercase; letter-spacing:0.5px;">
+              Tools & Platforms</h3>
+            <div class="skills">
+              <span class="skill">Jira</span>
+              <span class="skill">GitHub</span>
+              <span class="skill">Visio</span>
+              <span class="skill">Firebase</span>
+              <span class="skill">MySQL</span>
+              <span class="skill">osTicket</span>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -298,15 +319,15 @@
         <div class="card" style="margin-top:12px;display:flex;gap:18px;flex-wrap:wrap">
           <form id="contactForm" action="https://formspree.io/f/mwvprrpl" method="POST" style="flex:1;min-width:260px">
             <label style="display:block;margin-bottom:8px;color:var(--muted);font-weight:600">Your Email</label>
-            <input type="email" name="email" required
-              style="width:100%;padding:10px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:inherit;margin-bottom:16px">
+            <input type="email" name="email" required placeholder="recruiter@company.com"
+              style="width:100%;padding:10px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.1);color:inherit;margin-bottom:16px">
 
             <label style="display:block;margin-bottom:8px;color:var(--muted);font-weight:600">Message</label>
-            <textarea name="message" rows="5" required
-              style="width:100%;padding:10px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:inherit;resize:none"></textarea>
+            <textarea name="message" rows="5" required placeholder="Hi Emmanuel, I saw your portfolio..."
+              style="width:100%;padding:10px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.1);color:inherit;resize:none"></textarea>
 
             <div style="margin-top:10px; display:flex; align-items:center; gap:15px;">
-              <button class="btn" type="submit">Send</button>
+              <button class="btn" type="submit">Send Message</button>
               <span id="formStatus" style="display:none; color:#4ade80; font-size:0.9em; font-weight:600;">✓ Message
                 sent!</span>
             </div>

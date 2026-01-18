@@ -1,5 +1,54 @@
 /* =========================================
-   0. MOBILE HAMBURGER MENU
+   0. PROJECT CAROUSEL SCROLL ARROWS
+   ========================================= */
+document.addEventListener('DOMContentLoaded', function() {
+  const projectScroller = document.getElementById('projectScroller');
+  
+  if (projectScroller) {
+    // Create scroll arrow buttons
+    const scrollLeftBtn = document.createElement('button');
+    scrollLeftBtn.className = 'scroll-arrow scroll-left';
+    scrollLeftBtn.innerHTML = '&#10094;';
+    scrollLeftBtn.setAttribute('aria-label', 'Scroll projects left');
+    
+    const scrollRightBtn = document.createElement('button');
+    scrollRightBtn.className = 'scroll-arrow scroll-right';
+    scrollRightBtn.innerHTML = '&#10095;';
+    scrollRightBtn.setAttribute('aria-label', 'Scroll projects right');
+    
+    // Append to the wrapper (parent of projectScroller)
+    projectScroller.parentElement.appendChild(scrollLeftBtn);
+    projectScroller.parentElement.appendChild(scrollRightBtn);
+    
+    // Scroll functionality
+    const scrollAmount = 340; // Card width + gap
+    
+    scrollLeftBtn.addEventListener('click', function() {
+      projectScroller.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+    
+    scrollRightBtn.addEventListener('click', function() {
+      projectScroller.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+    
+    // Update arrow visibility
+    function updateArrowVisibility() {
+      const scrollLeft = projectScroller.scrollLeft;
+      const scrollWidth = projectScroller.scrollWidth;
+      const clientWidth = projectScroller.clientWidth;
+      
+      scrollLeftBtn.style.opacity = scrollLeft > 10 ? '1' : '0.3';
+      scrollRightBtn.style.opacity = scrollLeft < scrollWidth - clientWidth - 10 ? '1' : '0.3';
+    }
+    
+    projectScroller.addEventListener('scroll', updateArrowVisibility);
+    window.addEventListener('resize', updateArrowVisibility);
+    updateArrowVisibility(); // Initial check
+  }
+});
+
+/* =========================================
+   1. MOBILE HAMBURGER MENU
    ========================================= */
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('navMenu');
@@ -7,7 +56,8 @@ const navMenu = document.getElementById('navMenu');
 if (hamburger) {
   hamburger.addEventListener('click', function() {
     navMenu.classList.toggle('active');
-    hamburger.setAttribute('aria-expanded', navMenu.classList.contains('active'));
+    const isActive = navMenu.classList.contains('active');
+    hamburger.setAttribute('aria-expanded', isActive);
   });
 
   // Close menu when a link is clicked
@@ -29,14 +79,14 @@ if (hamburger) {
 }
 
 /* =========================================
-   1. CONTACT FORM HANDLING
+   2. CONTACT FORM HANDLING
    ========================================= */
 const form = document.getElementById("contactForm");
 const statusMsg = document.getElementById("formStatus");
 
 if (form) {
   form.addEventListener("submit", async function(event) {
-    event.preventDefault(); // Stop page reload
+    event.preventDefault();
     const data = new FormData(event.target);
 
     try {
@@ -49,11 +99,11 @@ if (form) {
       });
 
       if (response.ok) {
-        statusMsg.style.display = "block"; // Show success message
-        form.reset(); // Clear input fields
+        statusMsg.style.display = "block";
+        form.reset();
         setTimeout(() => {
           statusMsg.style.display = "none";
-        }, 4000); // Hide after 4 seconds
+        }, 4000);
       } else {
         alert("Oops! There was a problem submitting your form.");
       }
@@ -64,7 +114,7 @@ if (form) {
 }
 
 /* =========================================
-   2. PROJECT MODAL & GALLERY CONFIGURATION
+   3. PROJECT DATA
    ========================================= */
 const projectsData = {
   'osTicket': {
@@ -79,7 +129,7 @@ const projectsData = {
   },
 
   'homelab': {
-    title: "Home Lab: Network-Wide DNS Sinkhole & Ad Blocker",
+    title: "Home Lab: Network-Wide DNS Sinkhole",
     description: "Built a custom dashboard to monitor home network, block ads, and automate routine tasks.",
     video: "",
     images: [
@@ -101,17 +151,10 @@ const projectsData = {
       "Screens/media/project3/wazuh_discover.png",
       "Screens/media/project3/wazuh_main.png",
       "Screens/media/project3/wazuh_test.png",
-    ] // Add image paths here when ready
+    ]
   },
 
-  'active directory': {
-    title: "Active Directory Project",
-    description: "Description for your active directory project.",
-    video: "",
-    images: [] // Add image paths here when ready
-  },
-
-    'podcast website': {
+  'podcast website': {
     title: "Podcast Website",
     description: "Co-developed a centralized podcast discovery platform that allows users to create, curate, and share collaborative audio playlists using real-time cloud infrastructure.",
     video: "",
@@ -124,129 +167,130 @@ const projectsData = {
       "Screens/media/project4/Search.png",
       "Screens/media/project4/Settings.png",
       "Screens/media/project4/Upload.png",
-    ] // Add image paths here when ready
+    ]
   },
 
-    'policies and standards': {
+ 'policies and standards': {
     title: "Policies and Standards Implementation",
     description: "Implemented and maintained corporate policies and standards for IT operations and cybersecurity.",
     video: "",
-    images: [],
+    images: [], 
     pdfs: [
       "Screens/documents/Security-Plan.pdf",
       "Screens/documents/Change-Control-Management-Standard.pdf",
       "Screens/documents/Least-Privilege-Policy.pdf",
       "Screens/documents/Session-Termination-Policy.pdf",
-    ] // Add your PDF paths here
+    ]
   },
 };
 
 /* =========================================
-   3. MODAL LOGIC (Do not edit below)
+   4. MODAL LOGIC
    ========================================= */
-const modal = document.getElementById('projectModal');
-const modalTitle = document.getElementById('modalTitle');
-const modalDesc = document.getElementById('modalDescription');
-const modalVideo = document.getElementById('modalVideo');
-const videoSource = document.getElementById('videoSource');
-const modalImages = document.getElementById('modalImages');
-const slideCounter = document.getElementById('slideCounter');
+document.addEventListener('DOMContentLoaded', function() {
+  const modal = document.getElementById('projectModal');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalDesc = document.getElementById('modalDescription');
+  const modalVideo = document.getElementById('modalVideo');
+  const videoSource = document.getElementById('videoSource');
+  const modalImages = document.getElementById('modalImages');
+  const slideCounter = document.getElementById('slideCounter');
 
-let currentSlideIndex = 0;
-let totalSlides = 0;
+  let currentSlideIndex = 0;
+  let totalSlides = 0;
 
-function openModal(projectId) {
-  const data = projectsData[projectId];
-  if (!data) return;
+  window.openModal = function(projectId) {
+    const data = projectsData[projectId];
+    if (!data) return;
 
-  // 1. Set Title & Description
-  modalTitle.innerText = data.title;
-  modalDesc.innerText = data.description;
+    modalTitle.innerText = data.title;
+    modalDesc.innerText = data.description;
 
-  // 2. Set Video
-  if (data.video) {
-    videoSource.src = data.video;
-    modalVideo.parentElement.style.display = 'block';
-    modalVideo.load();
-  } else {
-    modalVideo.parentElement.style.display = 'none';
-  }
-
-  // 3. Set Images
-  modalImages.innerHTML = '';
-  currentSlideIndex = 0;
-  totalSlides = data.images.length + (data.pdfs ? data.pdfs.length : 0);
-
-  if (totalSlides > 0) {
-    data.images.forEach((imgSrc, index) => {
-      const img = document.createElement('img');
-      img.src = imgSrc;
-      img.alt = `Screenshot ${index + 1}`;
-      if (index === 0) img.classList.add('active');
-      modalImages.appendChild(img);
-    });
-
-    // Add PDFs
-    if (data.pdfs && data.pdfs.length > 0) {
-      data.pdfs.forEach((pdfSrc, index) => {
-        const pdfContainer = document.createElement('div');
-        pdfContainer.className = 'pdf-slide';
-        if (data.images.length === 0 && index === 0) pdfContainer.classList.add('active');
-        pdfContainer.innerHTML = `<embed src="${pdfSrc}" type="application/pdf" style="width:100%;height:600px;">`;
-        modalImages.appendChild(pdfContainer);
-      });
+    if (data.video) {
+      videoSource.src = data.video;
+      modalVideo.parentElement.style.display = 'block';
+      modalVideo.load();
+    } else {
+      modalVideo.parentElement.style.display = 'none';
     }
 
-    updateCounter();
-    document.querySelector('.carousel-container').style.display = 'flex';
-  } else {
-    document.querySelector('.carousel-container').style.display = 'none';
-  }
-
-  // 4. Show Modal
-  modal.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  document.addEventListener('keydown', handleKeyboardNav);
-}
-
-function closeModal() {
-  modal.style.display = 'none';
-  document.body.style.overflow = 'auto';
-  if (modalVideo) modalVideo.pause();
-  document.removeEventListener('keydown', handleKeyboardNav);
-}
-
-function handleKeyboardNav(e) {
-  if (e.key === 'ArrowLeft') changeSlide(-1);
-  if (e.key === 'ArrowRight') changeSlide(1);
-  if (e.key === 'Escape') closeModal();
-}
-
-function changeSlide(direction) {
-  const slides = modalImages.querySelectorAll('img, .pdf-slide');
-  if (slides.length === 0) return;
-
-  slides[currentSlideIndex].classList.remove('active');
-  currentSlideIndex += direction;
-
-  if (currentSlideIndex >= totalSlides) {
+    modalImages.innerHTML = '';
     currentSlideIndex = 0;
-  } else if (currentSlideIndex < 0) {
-    currentSlideIndex = totalSlides - 1;
-  }
 
-  slides[currentSlideIndex].classList.add('active');
-  updateCounter();
-}
+    const projectImages = data.images || [];
+    const projectPdfs = data.pdfs || [];
 
-function updateCounter() {
-  if (totalSlides > 0) {
-    slideCounter.innerText = `${currentSlideIndex + 1} / ${totalSlides}`;
-  } else {
-    slideCounter.innerText = "";
-  }
-}
+    totalSlides = projectImages.length + projectPdfs.length;
 
-function closeModalOnOutsideClick(e) {
-  if (e.target === modal) closeModal();
-}
+    if (totalSlides > 0) {
+      projectImages.forEach((imgSrc, index) => {
+        const img = document.createElement('img');
+        img.src = imgSrc;
+        img.alt = `Screenshot ${index + 1}`;
+        if (index === 0) img.classList.add('active');
+        modalImages.appendChild(img);
+      });
+
+      if (projectPdfs.length > 0) {
+        projectPdfs.forEach((pdfSrc, index) => {
+          const pdfContainer = document.createElement('div');
+          pdfContainer.className = 'pdf-slide';
+          if (projectImages.length === 0 && index === 0) pdfContainer.classList.add('active');
+          pdfContainer.innerHTML = `<embed src="${pdfSrc}" type="application/pdf" style="width:100%;height:600px;">`;
+          modalImages.appendChild(pdfContainer);
+        });
+      }
+
+      updateCounter();
+      document.querySelector('.carousel-container').style.display = 'flex';
+    } else {
+      document.querySelector('.carousel-container').style.display = 'none';
+    }
+
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', handleKeyboardNav);
+  };
+
+  window.closeModal = function() {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    if (modalVideo) modalVideo.pause();
+    document.removeEventListener('keydown', handleKeyboardNav);
+  };
+
+  window.changeSlide = function(direction) {
+    const slides = modalImages.querySelectorAll('img, .pdf-slide');
+    if (slides.length === 0) return;
+
+    slides[currentSlideIndex].classList.remove('active');
+    currentSlideIndex += direction;
+
+    if (currentSlideIndex >= totalSlides) {
+      currentSlideIndex = 0;
+    } else if (currentSlideIndex < 0) {
+      currentSlideIndex = totalSlides - 1;
+    }
+
+    slides[currentSlideIndex].classList.add('active');
+    updateCounter();
+  };
+
+  window.updateCounter = function() {
+    if (totalSlides > 0) {
+      slideCounter.innerText = `${currentSlideIndex + 1} / ${totalSlides}`;
+    } else {
+      slideCounter.innerText = "";
+    }
+  };
+
+  window.closeModalOnOutsideClick = function(e) {
+    if (e.target === modal) closeModal();
+  };
+
+  window.handleKeyboardNav = function(e) {
+    if (e.key === 'ArrowLeft') changeSlide(-1);
+    if (e.key === 'ArrowRight') changeSlide(1);
+    if (e.key === 'Escape') closeModal();
+  };
+});
