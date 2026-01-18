@@ -110,6 +110,35 @@ const projectsData = {
     video: "",
     images: [] // Add image paths here when ready
   },
+
+    'podcast website': {
+    title: "Podcast Website",
+    description: "Co-developed a centralized podcast discovery platform that allows users to create, curate, and share collaborative audio playlists using real-time cloud infrastructure.",
+    video: "",
+    images: [
+      "Screens/media/project4/Analytics.png",
+      "Screens/media/project4/Community-Sharing.png",
+      "Screens/media/project4/Favorite.png",
+      "Screens/media/project4/Homepage.png",
+      "Screens/media/project4/Login.png",
+      "Screens/media/project4/Search.png",
+      "Screens/media/project4/Settings.png",
+      "Screens/media/project4/Upload.png",
+    ] // Add image paths here when ready
+  },
+
+  'policies and standards': {
+    title: "Policies and Standards Implementation",
+    description: "Implemented and maintained corporate policies and standards for IT operations and cybersecurity.",
+    video: "",
+    images: [],
+    pdfs: [
+      "Screens/documents/Security-Plan.pdf",
+      "Screens/documents/Change-Control-Management-Standard.pdf",
+      "Screens/documents/Least-Privilege-Policy.pdf",
+      "Screens/documents/Session-Termination-Policy.pdf"
+    ] // Add your PDF paths here
+  },
 };
 
 /* =========================================
@@ -146,7 +175,7 @@ function openModal(projectId) {
   // 3. Set Images
   modalImages.innerHTML = '';
   currentSlideIndex = 0;
-  totalSlides = data.images.length;
+  totalSlides = data.images.length + (data.pdfs ? data.pdfs.length : 0);
 
   if (totalSlides > 0) {
     data.images.forEach((imgSrc, index) => {
@@ -156,6 +185,18 @@ function openModal(projectId) {
       if (index === 0) img.classList.add('active');
       modalImages.appendChild(img);
     });
+
+    // Add PDFs
+    if (data.pdfs && data.pdfs.length > 0) {
+      data.pdfs.forEach((pdfSrc, index) => {
+        const pdfContainer = document.createElement('div');
+        pdfContainer.className = 'pdf-slide';
+        if (data.images.length === 0 && index === 0) pdfContainer.classList.add('active');
+        pdfContainer.innerHTML = `<embed src="${pdfSrc}" type="application/pdf" style="width:100%;height:600px;">`;
+        modalImages.appendChild(pdfContainer);
+      });
+    }
+
     updateCounter();
     document.querySelector('.carousel-container').style.display = 'flex';
   } else {
@@ -182,10 +223,10 @@ function handleKeyboardNav(e) {
 }
 
 function changeSlide(direction) {
-  const images = modalImages.getElementsByTagName('img');
-  if (images.length === 0) return;
+  const slides = modalImages.querySelectorAll('img, .pdf-slide');
+  if (slides.length === 0) return;
 
-  images[currentSlideIndex].classList.remove('active');
+  slides[currentSlideIndex].classList.remove('active');
   currentSlideIndex += direction;
 
   if (currentSlideIndex >= totalSlides) {
@@ -194,7 +235,7 @@ function changeSlide(direction) {
     currentSlideIndex = totalSlides - 1;
   }
 
-  images[currentSlideIndex].classList.add('active');
+  slides[currentSlideIndex].classList.add('active');
   updateCounter();
 }
 

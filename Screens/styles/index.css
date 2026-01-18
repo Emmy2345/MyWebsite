@@ -702,3 +702,14 @@ footer {
   font-size: 13px;
   color: var(--muted);
 }
+
+.pdf-slide {
+  display: none;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.pdf-slide.active {
+  display: flex;
+}
