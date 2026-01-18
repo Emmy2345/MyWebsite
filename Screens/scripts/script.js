@@ -127,7 +127,7 @@ const projectsData = {
     ] // Add image paths here when ready
   },
 
-  'policies and standards': {
+    'policies and standards': {
     title: "Policies and Standards Implementation",
     description: "Implemented and maintained corporate policies and standards for IT operations and cybersecurity.",
     video: "",
@@ -136,7 +136,7 @@ const projectsData = {
       "Screens/documents/Security-Plan.pdf",
       "Screens/documents/Change-Control-Management-Standard.pdf",
       "Screens/documents/Least-Privilege-Policy.pdf",
-      "Screens/documents/Session-Termination-Policy.pdf"
+      "Screens/documents/Session-Termination-Policy.pdf",
     ] // Add your PDF paths here
   },
 };
