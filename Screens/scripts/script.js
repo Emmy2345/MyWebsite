@@ -117,6 +117,19 @@ if (form) {
    3. PROJECT DATA
    ========================================= */
 const projectsData = {
+
+'active directory': {
+    title: "Active Directory Implementation",
+    description: "Implemented a fully functional, local-based Active Directory environment using Windows Server.",
+    video: "Screens/media/project0/active_directory.mp4",
+    images: [
+      "Screens/media/project0/ad_add_user.png",
+      "Screens/media/project0/ad_domain_controller.png",
+      "Screens/media/project0/ad_network_sharing.png",
+      "Screens/media/project0/ad_rename.png",
+    ]
+  },
+
   'osTicket': {
     title: "Help Desk Ticketing System (osTicket)",
     description: "Implemented a fully functional, cloud-based ticketing system (osTicket).",
