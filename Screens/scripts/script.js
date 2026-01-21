@@ -170,7 +170,7 @@ const projectsData = {
   'podcast website': {
     title: "Podcast Website",
     description: "Co-developed a centralized podcast discovery platform that allows users to create, curate, and share collaborative audio playlists using real-time cloud infrastructure.",
-    video: "",
+    video: "Screens/media/project4/podcast_website.mp4",
     images: [
       "Screens/media/project4/Analytics.png",
       "Screens/media/project4/Community-Sharing.png",
