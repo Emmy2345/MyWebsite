@@ -6,40 +6,81 @@ const projectsData = {
     title: "Active Directory Implementation",
     description: "Implemented a fully functional, local-based Active Directory environment using Windows Server.",
     video: "Screens/media/project0/active_directory.mp4",
-    images: ["Screens/media/project0/ad_add_user.png", "Screens/media/project0/ad_domain_controller.png", "Screens/media/project0/ad_network_sharing.png", "Screens/media/project0/ad_rename.png"]
+    images:
+      [
+        "Screens/media/project0/ad_add_user.png",
+        "Screens/media/project0/ad_domain_controller.png",
+        "Screens/media/project0/ad_network_sharing.png",
+        "Screens/media/project0/ad_rename.png"
+      ]
   },
   'osTicket': {
     title: "Help Desk Ticketing System (osTicket)",
     description: "Implemented a fully functional, cloud-based ticketing system (osTicket).",
-    images: ["Screens/media/project1/osTicket_login.png", "Screens/media/project1/php_manager.png", "Screens/media/project1/iis.png"]
+    images:
+      [
+        "Screens/media/project1/osTicket_login.png",
+        "Screens/media/project1/php_manager.png",
+        "Screens/media/project1/iis.png"
+      ]
   },
   'homelab': {
     title: "Home Lab: Network-Wide DNS Sinkhole",
     description: "Built a custom dashboard to monitor home network, block ads, and automate routine tasks.",
-    images: ["Screens/media/project2/pi_hole_blocker.png", "Screens/media/project2/pi_hole_install.png", "Screens/media/project2/pi_hole_dash.png", "Screens/media/project2/pi_hole_log.png", "Screens/media/project2/pi_vnc_viewer.png"]
+    images:
+      [
+        "Screens/media/project2/pi_hole_blocker.png",
+        "Screens/media/project2/pi_hole_install.png",
+        "Screens/media/project2/pi_hole_dash.png",
+        "Screens/media/project2/pi_hole_log.png",
+        "Screens/media/project2/pi_vnc_viewer.png"
+      ]
   },
   'siem server': {
     title: "SIEM Server Implementation (Wazuh)",
     description: "Configured Wazuh SIEM for real-time threat detection and vulnerability monitoring.",
-    images: ["Screens/media/project3/wazuh_configuration.png", "Screens/media/project3/wazuh_dashboard.png", "Screens/media/project3/wazuh_discover.png", "Screens/media/project3/wazuh_main.png", "Screens/media/project3/wazuh_test.png"]
+    images:
+      [
+        "Screens/media/project3/wazuh_configuration.png",
+        "Screens/media/project3/wazuh_dashboard.png",
+        "Screens/media/project3/wazuh_discover.png",
+        "Screens/media/project3/wazuh_main.png",
+        "Screens/media/project3/wazuh_test.png"
+      ]
   },
   'podcast website': {
     title: "Podcast Website",
     description: "Co-developed a centralized podcast discovery platform with real-time cloud infrastructure.",
     video: "Screens/media/project4/podcast_website.mp4",
-    images: ["Screens/media/project4/Analytics.png", "Screens/media/project4/Community-Sharing.png", "Screens/media/project4/Favorite.png", "Screens/media/project4/Homepage.png", "Screens/media/project4/Login.png", "Screens/media/project4/Search.png", "Screens/media/project4/Settings.png", "Screens/media/project4/Upload.png"]
+    images:
+      [
+        "Screens/media/project4/Analytics.png",
+        "Screens/media/project4/Community-Sharing.png",
+        "Screens/media/project4/Favorite.png",
+        "Screens/media/project4/Homepage.png",
+        "Screens/media/project4/Login.png",
+        "Screens/media/project4/Search.png",
+        "Screens/media/project4/Settings.png",
+        "Screens/media/project4/Upload.png"
+      ]
   },
   'policies and standards': {
     title: "Policies and Standards Implementation",
     description: "Maintained corporate policies and standards for IT operations and cybersecurity.",
-    pdfs: ["Screens/documents/Security-Plan.pdf", "Screens/documents/Change-Control-Management-Standard.pdf", "Screens/documents/Least-Privilege-Policy.pdf", "Screens/documents/Session-Termination-Policy.pdf"]
+    pdfs:
+      [
+        "Screens/documents/Security-Plan.pdf",
+        "Screens/documents/Change-Control-Management-Standard.pdf",
+        "Screens/documents/Least-Privilege-Policy.pdf",
+        "Screens/documents/Session-Termination-Policy.pdf"
+      ]
   },
 };
 
 /* =========================================
    MAIN APPLICATION LOGIC
    ========================================= */
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
   // --- 1. PROJECT MODAL LOGIC ---
   const modal = document.getElementById('projectModal');
@@ -88,12 +129,13 @@ document.addEventListener('DOMContentLoaded', function() {
         if (index === 0) img.classList.add('active');
         modalImages.appendChild(img);
       });
-      // Add PDFs
+      // Add PDFs - SWITCHED TO IFRAME FOR SECURITY POLICY COMPATIBILITY
       projectPdfs.forEach((pdfSrc, index) => {
         const div = document.createElement('div');
         div.className = 'pdf-slide';
         if (projectImages.length === 0 && index === 0) div.classList.add('active');
-        div.innerHTML = `<embed src="${pdfSrc}" type="application/pdf" style="width:100%;height:600px;">`;
+        // Switched from <embed> to <iframe>
+        div.innerHTML = `<iframe src="${pdfSrc}" style="width:100%;height:600px;border:none;"></iframe>`;
         modalImages.appendChild(div);
       });
       updateCounter();
@@ -162,24 +204,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const scrollLeftBtn = document.createElement('button');
     scrollLeftBtn.className = 'scroll-arrow scroll-left';
     scrollLeftBtn.innerHTML = '&#10094;';
-    
+
     const scrollRightBtn = document.createElement('button');
     scrollRightBtn.className = 'scroll-arrow scroll-right';
     scrollRightBtn.innerHTML = '&#10095;';
-    
+
     projectScroller.parentElement.appendChild(scrollLeftBtn);
     projectScroller.parentElement.appendChild(scrollRightBtn);
-    
+
     const scrollAmount = 340;
-    
+
     scrollLeftBtn.addEventListener('click', () => {
       projectScroller.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
     });
-    
+
     scrollRightBtn.addEventListener('click', () => {
       projectScroller.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     });
-    
+
     // Update Arrow Visibility
     function updateArrowVisibility() {
       const scrollLeft = projectScroller.scrollLeft;
@@ -188,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
       scrollLeftBtn.style.opacity = scrollLeft > 10 ? '1' : '0.3';
       scrollRightBtn.style.opacity = scrollLeft < scrollWidth - clientWidth - 10 ? '1' : '0.3';
     }
-    
+
     projectScroller.addEventListener('scroll', updateArrowVisibility);
     window.addEventListener('resize', updateArrowVisibility);
     updateArrowVisibility();
@@ -230,11 +272,11 @@ document.addEventListener('DOMContentLoaded', function() {
     async function handleSubmit(event) {
       event.preventDefault();
       const data = new FormData(event.target);
-      
+
       statusMsg.style.display = "block";
       statusMsg.style.color = "var(--muted)";
       statusMsg.innerHTML = "Sending...";
-      if(submitBtn) submitBtn.disabled = true;
+      if (submitBtn) submitBtn.disabled = true;
 
       fetch(event.target.action, {
         method: form.method,
@@ -260,7 +302,7 @@ document.addEventListener('DOMContentLoaded', function() {
         statusMsg.style.color = "#f87171";
         statusMsg.innerHTML = "Oops! Network error.";
       }).finally(() => {
-        if(submitBtn) submitBtn.disabled = false;
+        if (submitBtn) submitBtn.disabled = false;
       });
     }
     form.addEventListener("submit", handleSubmit);
