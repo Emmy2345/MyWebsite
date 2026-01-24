@@ -5,10 +5,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Emmanuel Estrella | Portfolio</title>
+
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://formspree.io; child-src 'self'; frame-src 'self';">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
   <link rel="icon" href="Screens/documents/profile.jpeg">
   <link rel="stylesheet" href="Screens/styles/index.css" />
-  <meta name="description"
-    content="Portfolio of Emmanuel Estrella - Cybersecurity Specialist & IT Operations. View projects, skills, and certifications.">
+  <meta name="description" content="Portfolio of Emmanuel Estrella - Cybersecurity Specialist & IT Operations.">
 </head>
 
 <body>
@@ -44,8 +48,8 @@
         <div>
           <h1 id="home-title">Hi, I'm <span style="color:var(--accent)">Emmanuel Estrella</span> - I manage robust,
             secure IT infrastructure.</h1>
-          <p class="lead">IT professional focused on engineering, server
-            management, and data and security analysis. I keep systems online and secure.</p>
+          <p class="lead">IT professional focused on engineering, server management, and data and security analysis. I
+            keep systems online and secure.</p>
           <div class="cta">
             <a href="#projects" class="btn">View projects</a>
             <a href="#contact" class="btn secondary">Contact me</a>
@@ -82,11 +86,9 @@
         <div class="card">
           <h2 style="margin-top:0">About</h2>
           <p class="lead" style="margin-top:8px;color:var(--muted)">IT & Security Specialist with an active <strong>DoD
-              Secret
-              Clearance</strong> and a dual background in Computer Science and Cybersecurity. Blends military-grade
-            operational discipline with technical expertise in network administration, threat detection, and risk
-            management. Committed to safeguarding mission-critical infrastructure through rigorous access controls and
-            proactive security strategies.</p>
+              Secret Clearance</strong> and a dual background in Computer Science and Cybersecurity. Blends
+            military-grade operational discipline with technical expertise in network administration, threat detection,
+            and risk management.</p>
         </div>
       </section>
 
@@ -110,13 +112,11 @@
                   <li>Windows 11 Pro</li>
                   <li>VMware Workstation Pro</li>
                   <li>Active Directory</li>
-                  <li>Server Manager</li>
                   <li>PowerShell</li>
                 </ul>
               </div>
-              <button onclick="openModal('active directory')" class="btn"
-                style="width:100%; margin-top:12px; cursor:pointer;">View
-                Details</button>
+              <button class="btn project-btn" data-project="active directory"
+                style="width:100%; margin-top:12px; cursor:pointer;">View Details</button>
             </article>
 
             <article class="project card project-card-scroll">
@@ -133,7 +133,7 @@
                   <li>osTicket</li>
                 </ul>
               </div>
-              <button onclick="openModal('osTicket')" class="btn"
+              <button class="btn project-btn" data-project="osTicket"
                 style="width:100%; margin-top:12px; cursor:pointer;">View Details</button>
             </article>
 
@@ -148,12 +148,10 @@
                   <li>SSH (Secure Shell)</li>
                   <li>Pi-hole & Unbound DNS</li>
                   <li>PowerShell/Bash</li>
-                  <li>Lighttpd</li>
                 </ul>
               </div>
-              <button onclick="openModal('homelab')" class="btn"
-                style="width:100%; margin-top:12px; cursor:pointer;">View
-                Details</button>
+              <button class="btn project-btn" data-project="homelab"
+                style="width:100%; margin-top:12px; cursor:pointer;">View Details</button>
             </article>
 
             <article class="project card project-card-scroll">
@@ -166,11 +164,10 @@
                   <li>VMware Workstation Pro</li>
                   <li>Ubuntu 24.04 LTS</li>
                   <li>Wazuh Manager/Agent</li>
-                  <li>Network Configuration</li>
                   <li>GitHub Integration</li>
                 </ul>
               </div>
-              <button onclick="openModal('siem server')" class="btn"
+              <button class="btn project-btn" data-project="siem server"
                 style="width:100%; margin-top:12px; cursor:pointer;">View Details</button>
             </article>
 
@@ -178,8 +175,7 @@
               <div>
                 <h3 style="margin:0">Policies & Standards</h3>
                 <p style="color:var(--muted);font-size:14px;margin-top:6px">Implemented and maintained corporate
-                  policies
-                  and standards for IT operations and cybersecurity.</p>
+                  policies and standards for IT operations and cybersecurity.</p>
                 <h3 style="color:var(--muted);font-size:14px;margin-top:6px">Documents:</h3>
                 <ul style="color:var(--muted);font-size:14px;margin-top:6px;padding-left:20px;">
                   <li>Security Plan</li>
@@ -188,7 +184,7 @@
                   <li>Session Termination Policy</li>
                 </ul>
               </div>
-              <button onclick="openModal('policies and standards')" class="btn"
+              <button class="btn project-btn" data-project="policies and standards"
                 style="width:100%; margin-top:12px; cursor:pointer;">View Details</button>
             </article>
 
@@ -205,7 +201,7 @@
                   <li>Git/GitHub</li>
                 </ul>
               </div>
-              <button onclick="openModal('podcast website')" class="btn"
+              <button class="btn project-btn" data-project="podcast website"
                 style="width:100%; margin-top:12px; cursor:pointer;">View Details</button>
             </article>
 
@@ -216,7 +212,6 @@
       <section id="certifications" style="margin-top:36px">
         <h2>Certifications</h2>
         <div class="cert-grid">
-
           <a href="https://www.credly.com/badges/feac140b-1bbb-48d1-8a36-46a535de43bc/public_url" target="_blank"
             class="cert-card">
             <img src="Screens/media/certifications/security_plus.png" alt="CompTIA" class="cert-logo">
@@ -226,7 +221,6 @@
               <p style="font-size:12px; opacity:0.7">Earned: November 2025</p>
             </div>
           </a>
-
           <a href="https://certification.platform.comptia.org/verifycert/6-3C6-93H5V" target="_blank" class="cert-card">
             <img src="Screens/media/certifications/ai_essentials.png" alt="CompTIA" class="cert-logo">
             <div class="cert-info">
@@ -235,105 +229,70 @@
               <p style="font-size:12px; opacity:0.7">Earned: November 2025</p>
             </div>
           </a>
-
-          <!--
-          <a href="#" target="_blank" class="cert-card" style="opacity: 0.8; cursor: default">
-            <img src="Screens/media/certifications/azure_az900.jpg" alt="Azure" class="cert-logo">
-            <div class="cert-info">
-              <h3>Azure Fundamentals (AZ-900)</h3>
-              <p>In Progress</p>
-              <p style="font-size:12px; opacity:0.7">Expected: February 2026</p>
-            </div>
-          </a>
-        -->
-
           <a href="https://www.credly.com/badges/18b5ca03-1701-4dc5-a0e3-05710a5c5f64/public_url" target="_blank"
             class="cert-card">
-            <img src="Screens/media/certifications/isc2-candidate.png" alt="Azure" class="cert-logo">
+            <img src="Screens/media/certifications/isc2-candidate.png" alt="ISC2" class="cert-logo">
             <div class="cert-info">
               <h3>ISC2 Candidate</h3>
               <p>Issued by: ISC2</p>
               <p style="font-size:12px; opacity:0.7">Earned: December 2025</p>
             </div>
           </a>
-
           <a href="https://www.credly.com/badges/f3c7dc63-b3e4-4b69-a112-a6bf9732a7e5/public_url" target="_blank"
             class="cert-card">
-            <img src="Screens/media/certifications/certified-in-cybersecurity-cc.png" alt="Azure" class="cert-logo">
+            <img src="Screens/media/certifications/certified-in-cybersecurity-cc.png" alt="ISC2" class="cert-logo">
             <div class="cert-info">
               <h3>Certified in Cybersecurity (CC)</h3>
               <p>Issued by: ISC2</p>
               <p style="font-size:12px; opacity:0.7">Earned: January 2026</p>
             </div>
           </a>
-
         </div>
       </section>
 
       <section id="skills" style="margin-top:24px">
         <h2>Skills</h2>
         <div class="skills-container" style="margin-top:12px">
-
           <div class="card skill-card">
             <h3
               style="margin-top:0; color:var(--accent); font-size:14px; font-weight:600; text-transform:uppercase; letter-spacing:0.5px;">
               Networking & Security</h3>
             <div class="skills">
-              <span class="skill">Wireshark</span>
-              <span class="skill">TCP/IP</span>
-              <span class="skill">DNS</span>
-              <span class="skill">DHCP</span>
-              <span class="skill">VPN</span>
-              <span class="skill">VLANs</span>
-              <span class="skill">Firewalls</span>
-              <span class="skill">Wazuh</span>
+              <span class="skill">Wireshark</span><span class="skill">TCP/IP</span><span class="skill">DNS</span><span
+                class="skill">DHCP</span><span class="skill">VPN</span><span class="skill">VLANs</span><span
+                class="skill">Firewalls</span><span class="skill">Wazuh</span>
             </div>
           </div>
-
           <div class="card skill-card">
             <h3
               style="margin-top:0; color:var(--accent); font-size:14px; font-weight:600; text-transform:uppercase; letter-spacing:0.5px;">
               Cloud & Infrastructure</h3>
             <div class="skills">
-              <span class="skill">Microsoft Azure</span>
-              <span class="skill">VMware</span>
-              <span class="skill">Windows Server 2019</span>
-              <span class="skill">Windows 10/11</span>
-              <span class="skill">Linux (Ubuntu)</span>
-              <span class="skill">Active Directory</span>
+              <span class="skill">Microsoft Azure</span><span class="skill">VMware</span><span class="skill">Windows
+                Server 2019</span><span class="skill">Windows 10/11</span><span class="skill">Linux (Ubuntu)</span><span
+                class="skill">Active Directory</span>
             </div>
           </div>
-
           <div class="card skill-card">
             <h3
               style="margin-top:0; color:var(--accent); font-size:14px; font-weight:600; text-transform:uppercase; letter-spacing:0.5px;">
               Development & Scripting</h3>
             <div class="skills">
-              <span class="skill">Python</span>
-              <span class="skill">PowerShell</span>
-              <span class="skill">Bash</span>
-              <span class="skill">C#</span>
-              <span class="skill">C++</span>
-              <span class="skill">Java/JavaScript</span>
-              <span class="skill">HTML/CSS</span>
+              <span class="skill">Python</span><span class="skill">PowerShell</span><span class="skill">Bash</span><span
+                class="skill">C#</span><span class="skill">C++</span><span class="skill">Java/JavaScript</span><span
+                class="skill">HTML/CSS</span>
             </div>
           </div>
-
           <div class="card skill-card">
             <h3
               style="margin-top:0; color:var(--accent); font-size:14px; font-weight:600; text-transform:uppercase; letter-spacing:0.5px;">
               Tools & Platforms</h3>
             <div class="skills">
-              <span class="skill">Jira</span>
-              <span class="skill">GitHub</span>
-              <span class="skill">Visio</span>
-              <span class="skill">Firebase</span>
-              <span class="skill">MySQL</span>
-              <span class="skill">osTicket</span>
-              <span class="skill">Microsoft Office (Word, Excel, PowerPoint)</span>
+              <span class="skill">Jira</span><span class="skill">GitHub</span><span class="skill">Visio</span><span
+                class="skill">Firebase</span><span class="skill">MySQL</span><span class="skill">osTicket</span><span
+                class="skill">MS Office</span>
             </div>
           </div>
-
         </div>
       </section>
 
@@ -350,9 +309,8 @@
               style="width:100%;padding:10px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.1);color:inherit;resize:none"></textarea>
 
             <div style="margin-top:10px; display:flex; align-items:center; gap:15px;">
-              <button class="btn" type="submit">Send Message</button>
-              <span id="formStatus" style="display:none; color:#4ade80; font-size:0.9em; font-weight:600;">✓ Message
-                sent!</span>
+              <button class="btn" type="submit" id="contactForm-button">Send Message</button>
+              <span id="formStatus" style="display:none; font-size:0.9em; font-weight:600;"></span>
             </div>
           </form>
 
@@ -393,31 +351,25 @@
     </footer>
   </div>
 
-  <div id="projectModal" class="modal-overlay" onclick="closeModalOnOutsideClick(event)">
+  <div id="projectModal" class="modal-overlay">
     <div class="modal-content">
       <div class="modal-header">
         <h2 id="modalTitle" style="margin:0">Project Title</h2>
-        <button class="close-btn" onclick="closeModal()">&times;</button>
+        <button class="close-btn" id="closeModalBtn">&times;</button>
       </div>
       <div class="modal-body">
-
         <div class="video-container">
           <video id="modalVideo" width="100%" height="auto" controls style="display:block">
             <source id="videoSource" src="" type="video/mp4">
             Your browser does not support the video tag.
           </video>
         </div>
-
         <p id="modalDescription" style="color:var(--muted); line-height:1.6"></p>
-
         <h3 style="margin-top:24px">Gallery</h3>
         <div class="carousel-container">
-          <button class="nav-btn prev" onclick="changeSlide(-1)">&#10094;</button>
-
-          <div id="modalImages" class="carousel-track">
-          </div>
-
-          <button class="nav-btn next" onclick="changeSlide(1)">&#10095;</button>
+          <button class="nav-btn prev" id="prevSlide">&#10094;</button>
+          <div id="modalImages" class="carousel-track"></div>
+          <button class="nav-btn next" id="nextSlide">&#10095;</button>
         </div>
         <p id="slideCounter" style="text-align:center; color:var(--muted); font-size:12px; margin-top:8px"></p>
       </div>
@@ -425,7 +377,6 @@
   </div>
 
   <script src="Screens/scripts/script.js"></script>
-
 </body>
 
 </html>
