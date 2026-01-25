@@ -6,6 +6,7 @@ const projectsData = {
     title: "Active Directory Implementation",
     description: "Implemented a fully functional, local-based Active Directory environment using Windows Server.",
     video: "Screens/media/project0/active_directory.mp4",
+    poster: "Screens/media/project0/ad_thumbnail.png",
     images:
       [
         "Screens/media/project0/ad_add_user.png",
@@ -28,6 +29,7 @@ const projectsData = {
     title: "Home Lab: Network-Wide DNS Sinkhole",
     description: "Built a custom dashboard to monitor home network, block ads, and automate routine tasks.",
     video: "Screens/media/project2/pihole_block.mp4",
+    poster: "Screens/media/project2/pihole_thumbnail.png",
     images:
       [
         "Screens/media/project2/pi_hole_blocker.png",
@@ -53,6 +55,7 @@ const projectsData = {
     title: "Podcast Website",
     description: "Co-developed a centralized podcast discovery platform with real-time cloud infrastructure.",
     video: "Screens/media/project4/podcast_website.mp4",
+    poster: "Screens/media/project4/podcast_thumbnail.png",
     images:
       [
         "Screens/media/project4/Analytics.png",
@@ -109,10 +112,20 @@ document.addEventListener('DOMContentLoaded', function () {
     // Handle Video
     if (data.video) {
       videoSource.src = data.video;
+
+      // NEW CODE STARTS HERE
+      if (data.poster) {
+        modalVideo.poster = data.poster;
+      } else {
+        modalVideo.poster = ""; // Clear the poster if the project has no specific thumbnail
+      }
+      // NEW CODE ENDS HERE
+
       modalVideo.parentElement.style.display = 'block';
       modalVideo.load();
     } else {
       modalVideo.parentElement.style.display = 'none';
+      modalVideo.poster = ""; // Cleanup
     }
 
     // Handle Images/PDFs
