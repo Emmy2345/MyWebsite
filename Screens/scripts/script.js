@@ -27,6 +27,7 @@ const projectsData = {
   'homelab': {
     title: "Home Lab: Network-Wide DNS Sinkhole",
     description: "Built a custom dashboard to monitor home network, block ads, and automate routine tasks.",
+    video: "Screens/media/project2/pihole_block.mp4",
     images:
       [
         "Screens/media/project2/pi_hole_blocker.png",
