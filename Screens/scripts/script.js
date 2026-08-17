@@ -250,8 +250,23 @@ document.addEventListener('DOMContentLoaded', function () {
     updateArrowVisibility();
   }
 
+  // --- 3. BACK TO TOP BUTTON ---
+  const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+  if (scrollToTopBtn) {
+    const toggleScrollToTopButton = () => {
+      const visible = window.scrollY > 240;
+      scrollToTopBtn.classList.toggle('visible', visible);
+    };
 
-  // --- 3. HAMBURGER MENU ---
+    toggleScrollToTopButton();
+    window.addEventListener('scroll', toggleScrollToTopButton, { passive: true });
+
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // --- 4. HAMBURGER MENU ---
   const hamburger = document.getElementById('hamburger');
   const navMenu = document.getElementById('navMenu');
 
